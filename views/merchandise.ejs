@@ -1,0 +1,24 @@
+<!-- 201935312 이수현 views/merchandise.ejs -->
+<table class="table table-bordered ">
+
+    <% 
+    if(merchandise !== undefined){
+        merchandise.map((product)=>{ %>
+            <tr><td><img src= "<%= product.image %>" style="width:100px;height:100px; "></td>
+                <td><%= product.name %></td>
+                <td>가격 : <%= product.price%></td>
+                <td>브랜드 : <%= product.brand%></td> 
+                <!-- context에 update를 넣어 view, update 분류 -->
+                <% if (update === 'YES'){ %>
+                    <td><a href = "/merchandise/update/<%=product.mer_id%>"> 수정 </a> </td>
+                    <td><a href="/merchandise/delete/<%= product.mer_id %>" onclick="if (confirm('정말로 삭제하겠습니까?') == false) {return false;}"> 삭제 </a></td>
+                <%} %>
+            </tr>
+        <%})
+    }else{
+        자료없음
+    }
+    %>
+    
+
+</table>

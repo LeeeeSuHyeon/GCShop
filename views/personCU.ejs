@@ -1,0 +1,80 @@
+<!-- 201935312 이수현 views/personCU.ejs -->
+
+<div class="container">	
+    <h2>코드 입력</h2>
+
+	<% if (person !== null){ %>
+		<form action="/person/update_process" method="post" >
+			<div class="mb-3">
+				<label class="form-label" for="id">로그인 아이디</label> 
+				<input class="form-control" type="text" name="loginid" value = "<%=person.loginid%>" style = "width:300px;" />
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id">비밀번호</label> 
+				<input class="form-control" type="text" name="password" value = "<%=person.password%>" style = "width:300px;" />
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id">사용자 이름</label> 
+				<input class="form-control" type="text" name="name" value = "<%=person.name%>" style="width:300px;" />
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id">주소</label> 
+				<input class="form-control" type="text" name="address" value = "<%=person.address%>" style="width:300px;" />
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id">전화번호</label> 
+				<input class="form-control" type="text" name="tel"  value = "<%=person.tel%>" style="width:300px;" />
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id">생년월일</label> 
+				<input class="form-control" type="text" name="birth" value = "<%=person.birth%>" style="width:300px;" />
+			</div>
+            <div class="mb-3">
+				<label class="form-label" for="id">클래스</label> 
+				<input class="form-control" type="text" name="class" value = "<%=person.class%>" style="width:300px;" />
+			</div>
+            <div class="mb-3">
+				<label class="form-label" for="id">포인트</label> 
+				<input class="form-control" type="text" name="point" value = "<%=person.point%>" style="width:300px;" />
+			</div>
+			<button class="btn btn-outline-primary btn-sm" type="submit">입력</button>
+	  </form>
+	  <% } 
+	  else { %> 
+		<form action="/person/create_process" method="post" >
+			<div class="mb-3">
+				<label class="form-label" for="id">로그인 아이디</label> 
+				<input class="form-control" type="text" name="loginid" style = "width:300px;" />
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id">비밀번호</label> 
+				<input class="form-control" type="text" name="password"  style = "width:300px;" />
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id">사용자 이름</label> 
+				<input class="form-control" type="text" name="name"  style="width:300px;" />
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id">주소</label> 
+				<input class="form-control" type="text" name="address" style="width:300px;" />
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id">전화번호</label> 
+				<input class="form-control" type="text" name="tel" style="width:300px;" />
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id">생년월일</label> 
+				<input class="form-control" type="text" name="birth"  style="width:300px;" />
+			</div>
+            <div class="mb-3">
+				<label class="form-label" for="id">클래스</label> 
+				<input class="form-control" type="text" name="class"  style="width:300px;" />
+			</div>
+            <div class="mb-3">
+				<label class="form-label" for="id">포인트</label> 
+				<input class="form-control" type="text" name="point" style="width:300px;" />
+			</div>
+			<button class="btn btn-outline-primary btn-sm" type="submit">입력</button>
+	  </form>
+  <% } %>
+</div>

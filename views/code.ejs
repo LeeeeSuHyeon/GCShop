@@ -1,0 +1,24 @@
+<!-- 201935312 이수현 code.ejs -->
+<table class="table table-bordered border-primary">
+    <thead><td>대분류</td><td>대분류명</td><td>소분류</td><td>소분류명</td><td>시작일</td><td>종료일</td>
+       
+    </thead> 
+   
+    <% if(codes !== undefined){
+        codes.map((code)=>{ %>
+            <tr><td><%=code.main_id%></td><td><%=code.main_name%></td>
+                <td><%=code.sub_id%></td><td><%=code.sub_name%></td>
+                <td><%=code.start%></td><td><%=code.end%></td>
+                <% if (update === 'YES'){ %>
+                    <td><a href = "/code/update/<%=code.main_id%>/<%=code.sub_id%>"> 수정 </a> </td>
+                    <td><a href="/code/delete/<%=code.main_id%>/<%=code.sub_id%>" onclick="if (confirm('정말로 삭제하겠습니까?') == false) {return false;}"> 삭제 </a></td>
+                <%} %>
+            </tr>
+        <%})
+        }else{
+            자료없음
+        }
+        %>
+
+
+</table>

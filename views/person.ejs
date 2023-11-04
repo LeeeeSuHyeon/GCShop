@@ -1,0 +1,26 @@
+<!-- 201935312 이수현 views/person.ejs -->
+
+<table class="table table-bordered border-primary">
+    <thead><td>Login_ID</td><td>Password</td><td>Name</td><td>Address</td><td>Tel</td><td>Birth</td><td>Class</td><td>Point</td>
+       
+    </thead> 
+   
+    <% if(persons !== undefined){
+        persons.map((person)=>{ %>
+            <tr><td><%=person.loginid%></td><td><%=person.password%></td>
+                <td><%=person.name%></td><td><%=person.address%></td>
+                <td><%=person.tel%></td><td><%=person.birth%></td>
+                <td><%=person.class%></td><td><%=person.point%></td>
+                <% if (update === 'YES'){ %>
+                    <td><a href = "/person/update/<%=person.loginid%>"> 수정 </a> </td>
+                    <td><a href="/person/delete/<%=person.loginid%>" onclick="if (confirm('정말로 삭제하겠습니까?') == false) {return false;}"> 삭제 </a></td>
+                <%} %>
+            </tr>
+        <%})
+        }else{
+            자료없음
+        }
+        %>
+
+
+</table>

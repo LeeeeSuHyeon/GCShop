@@ -1,0 +1,35 @@
+<!-- 201935312 이수현 views/register.ejs -->
+<div class="container">	
+	<h2>회원가입</h2>
+	<form action="/auth/register_process" method="post" >
+		<div class="mb-3">
+            <label class="form-label" for="id">아이디</label> 
+            <input class="form-control" type="text" name="loginid" style = "width:300px;" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="id">비밀번호</label> 
+            <input class="form-control" type="text" name="password"  style = "width:300px;" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="id">사용자 이름</label> 
+            <input class="form-control" type="text" name="name"  style="width:300px;" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="id">주소</label> 
+            <input class="form-control" type="text" name="address" style="width:300px;" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="id">전화번호</label> 
+            <input class="form-control" type="text" name="tel" style="width:300px;" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="id">생년월일</label> 
+            <input class="form-control" type="text" name="birth"  style="width:300px;" />
+        </div>
+            <!-- 회원가입 시 클래스와 포인트는 hidden으로 넘겨줌 -->
+            <input type="hidden" name="class" value = "02" />
+            <input type="hidden" name="point" value = "0" />
+    <button class="btn btn-outline-primary btn-sm" type="submit">회원가입</button>
+  </form>
+</div>
+
