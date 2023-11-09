@@ -31,6 +31,7 @@ var authRouter = require('./router/authRouter');
 var codeRouter = require('./router/codeRouter');
 var personRouter = require('./router/personRouter');
 var merchandiseRouter = require('./router/merchandiseRouter')
+var boardRouter = require('./router/boardRouter')
 
 
 // body-parser 모듈 
@@ -43,7 +44,7 @@ app.use('/auth', authRouter);
 app.use('/code',codeRouter);
 app.use('/person',personRouter);
 app.use('/merchandise',merchandiseRouter);
-//app.use('/board',boardRouter);
+app.use('/board',boardRouter);
 
 
 //정적 파일 폴더 지정

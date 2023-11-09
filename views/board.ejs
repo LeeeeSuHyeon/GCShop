@@ -1,0 +1,23 @@
+<!-- 201935312 이수현 board.ejs -->
+<table class="table table-bordered border-primary">
+    <thead><td>제목</td><td>페이지 당 글 수</td><td>설명</td><td>일반 사용자 쓰기 가능 여부</td><td>댓글 가능 여부</td>
+       
+    </thead> 
+   
+    <% if(boardtypes !== undefined){
+        boardtypes.map((boardtype)=>{ %>
+            <tr><td><%=boardtype.title%></td><td><%=boardtype.numPerPage%></td>
+                <td><%=boardtype.description%></td><td><%=boardtype.write_YN%></td>
+                <td><%=boardtype.re_YN%></td>
+                <td><a href = "/board/type/update/<%=boardtype.type_id%>"> 수정 </a> </td>
+                <td><a href="/board/type/delete/<%=boardtype.type_id%>" onclick="if (confirm('정말로 삭제하겠습니까?') == false) {return false;}"> 삭제 </a></td>
+        
+            </tr>
+        <%})
+        }else{
+            자료없음
+        }
+        %>
+
+
+</table>
