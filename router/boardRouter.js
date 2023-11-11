@@ -44,7 +44,7 @@ router.get('/create/:typeId', (req, res)=>{
     board.create(req, res);
 })
 
-router.get('/create_process', (req, res)=>{
+router.post('/create_process', (req, res)=>{
     board.create_process(req, res);
 })
 
@@ -56,7 +56,7 @@ router.get('/update/:boardId/:typeId/:pNum', (req, res)=>{
     board.update(req, res);
 })
 
-router.get('/update_process', (req, res)=>{
+router.post('/update_process', (req, res)=>{
     board.update_process(req, res);
 })
 

@@ -40,9 +40,8 @@
             </a>
             <ul class="dropdown-menu">
               <% var i = 0
-                while(i<boardtypes.length)
-                { %>
-                  <li><a class="dropdown-item" href="/board/view/<%=boardtypes[i].type_id%>1"><%=boardtypes[i].title%></a></li>
+                while(i<boardtypes.length){ %>
+                  <li><a class="dropdown-item" href="/board/view/<%=boardtypes[i].type_id%>/1"><%=boardtypes[i].title%></a></li>
                 <% i+=1 } %>
             </ul>
           </li>

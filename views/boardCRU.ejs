@@ -1,27 +1,82 @@
+<!-- 201935312 이수현 boardCRU.ejs -->
+
 <div class="container">	
 	
+    <% if (CRU === "C"){ %>
+		<h2> <%=boardtype.title%> 생성</h2>
+		<form action="/board/create_process" method="post" >
+			<input type = "hidden" name="type_id" value="<%=boardtype.type_id%>" >
+			<input type = "hidden" name="loginid" value = "<%=loginid%>">
+			<div class="mb-3">
+				<label class="form-label" for="id">제목</label> 
+				<input class="form-control" type="text" name="title" style = "width:300px;" />
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id">작성자</label> 
+				<input class="form-control" type="text" name="name" value = "<%=name%>" style = "width:300px;" disabled/>
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id">내용</label> 
+				<textarea class="form-control" name="content" style = "width:800px;height: 200px;" ></textarea>
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id">갱신삭제시 비밀번호</label> 
+				<input class="form-control" type="text" name="password" style = "width:300px;" />
+			</div>
+			<button class="btn btn-outline-primary btn-sm" type="submit">생성</button>
+	  </form>
+	<% }
     
-    <h2> 생성</h2>
-	<form action="/board/create_process" method="post" >
-        <input type = "hidden" name="type_id" value = "<%=btname[0].type_id%>">
-        <input type = "hidden" name="loginid" value = "<%=loginid%>">
-		<div class="mb-3">
-			<label class="form-label" for="id">제목</label> 
-			<input class="form-control" type="text" name="title" style = "width:300px;" />
+	else if (CRU === "R"){ %>
+		<div>
+			<div class="mb-3">
+				<label class="form-label" for="id">제목</label> 
+				<input class="form-control" type="text" name="title" value = "<%=board.title%>" style = "width:300px;" disabled/>
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id">작성자</label> 
+				<input class="form-control" type="text" name="name" value = "<%=board.name%>" style = "width:300px;" disabled/>
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id">작성일</label> 
+				<input class="form-control" type="text" name="date" value = "<%=board.date%>" style = "width:300px;" disabled/>
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id">내용</label> 
+				<textarea class="form-control" type="text" name="content" style = "width:800px;height: 200px;" disabled ><%=board.content%></textarea>
+			</div>
 		</div>
-        <div class="mb-3">
-			<label class="form-label" for="id">작성자</label> 
-			<input class="form-control" type="text" name="title" value = "<%=who%>" style = "width:300px;" disabled/>
+		<div style="text-align: right;">
+			<a href = "/board/view/<%=board.type_id%>/1"><button class = "btn btn-info me-md-2" >목록</button></a>
+			<% if(CU){ %>
+				<a href = "/board/update/<%=board.board_id%>/<%=board.type_id%>/1"><button class = "btn btn-info me-md-2" >수정</button></a>
+				<a href = "/board/delete/<%=board.board_id%>/<%=board.type_id%>/1" onclick=" if (confirm('정말로 삭제하겠습니까?') == false) {return false;}"><button class = "btn btn-info me-md-2" >삭제</button></a>
+				<% }  %>
 		</div>
-        <div class="mb-3">
-			<label class="form-label" for="id">내용</label> 
-			<textarea class="form-control" name="content" style = "width:800px;height: 200px;" ></textarea>
-		</div>
-        <div class="mb-3">
-			<label class="form-label" for="id">갱신삭제시 비밀번호</label> 
-			<input class="form-control" type="text" name="password" style = "width:300px;" />
-		</div>
-        <button class="btn btn-outline-primary btn-sm" type="submit">생성</button>
-    
-  </form>
+	<% } 
+	else if (CRU === "U"){ %>
+		<h2> 게시물 수정 </h2>
+		<form action="/board/update_process" method="post" >
+			<input type = "hidden" name="type_id" value="<%=board.type_id%>" >
+			<input type = "hidden" name="board_id" value = "<%=board.board_id%>">
+			<input type = "hidden" name="loginid" value = "<%=board.loginid%>">
+			<div class="mb-3">
+				<label class="form-label" for="id">제목</label> 
+				<input class="form-control" type="text" name="title" value = "<%=board.title%>" style = "width:300px;" />
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id">작성자</label> 
+				<input class="form-control" type="text" name="name" value = "<%=board.name%>" style = "width:300px;" disabled/>
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id">내용</label> 
+				<textarea class="form-control" name="content" style = "width:800px;height: 200px;" ><%=board.content%></textarea>
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="id">갱신삭제시 비밀번호</label> 
+				<input class="form-control" type="text" name="password" style = "width:300px;" />
+			</div>
+			<button class="btn btn-outline-primary btn-sm" type="submit">수정</button>
+		</form>
+	  <% } %>
 </div>

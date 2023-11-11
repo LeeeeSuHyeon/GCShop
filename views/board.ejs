@@ -1,0 +1,40 @@
+<!-- 201935312 이수현 board.ejs -->
+
+
+<!-- boardtypes.title -->
+<h1><%=boardtype.title %></h1>
+<div style="position: relative;">
+    <table class="table table-bordered border-primary">
+        <thead><td>작성자</td><td>제목</td><td>날짜</td>
+        
+        </thead> 
+    
+        <% if(boards !== undefined){
+            boards.map((board)=>{ %>
+                <tr><td><%=board.name%></td>
+                    <td><a href = "/board/detail/<%=board.board_id%>/1"><%=board.title%></a></td>
+                    <td><%=board.date%></td>
+                </tr>
+        <%})
+        }else{ %>
+            <tr>
+                <td colspan="3">자료없음</td>
+            </tr>
+        <% } %>
+    </table>
+
+    <% if (write === "Y"){ %>
+        <div style="position: absolute; bottom: -50; right: 0;">
+            <a href = "/board/create/<%=boardtype.type_id%>"><button type = "button" class = "btn btn-info me-md-2" style="text-align: right;">글쓰기</button></a>
+        </div>
+    <% } %>
+
+    <% var j = 1;
+        while (j <= totalPages) {
+            if(j == pNum){ %>
+                <span style="font-weight : bold;"><%=j%></span> &nbsp;&nbsp;
+            <% } else { %>
+                <span><a href="/board/view/<%=boardtype.type_id%>/<%=j%>"><%=j%></a></span> &nbsp;&nbsp;
+            <% } j++
+        } %>
+</div>
