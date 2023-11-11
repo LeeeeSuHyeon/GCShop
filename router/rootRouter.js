@@ -12,10 +12,14 @@ router.get('/',(req, res)=>{
 }); 
 
 
-router.get('/shop/all',(req, res)=>{
+router.get('/shop/:category',(req, res)=>{
 
     shop.home(req, res);
 }); 
 
+router.get('/shop/detail/:merId',(req, res)=>{
+
+    shop.detail(req, res);
+}); 
 module.exports = router;
 
