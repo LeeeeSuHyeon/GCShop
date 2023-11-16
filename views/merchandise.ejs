@@ -4,7 +4,7 @@
     <% 
     if(merchandise !== undefined){
         merchandise.map((product)=>{ %>
-            <tr><td><img src= "<%= product.image %>" style="width:100px;height:100px; "></td>
+            <tr><td><a href = "/shop/detail/<%=product.mer_id%>"><img src= "<%= product.image %>" style="width:100px;height:100px; "></a></td>
                 <td><%= product.name %></td>
                 <td>가격 : <%= product.price%></td>
                 <td>브랜드 : <%= product.brand%></td> 

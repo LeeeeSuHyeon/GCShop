@@ -1,0 +1,50 @@
+<div class="container">
+    <script>
+        function updateButtons() {
+            var qtyInput = document.getElementsByName("qty")[0];
+            var purchaseButton = document.getElementById("purchaseButton");
+            var cartButton = document.getElementById("cartButton");
+
+            if (parseInt(qtyInput.value) === 0) {
+                purchaseButton.disabled = true;
+                cartButton.disabled = true;
+            } else {
+                purchaseButton.disabled = false;
+                cartButton.disabled = false;
+            }
+        }
+    </script>
+
+    <form action="/purchase/purchase_process" method="post">
+        <input type="hidden" name="mer_id" value="<%=merchandise.mer_id%>">
+        <input type="hidden" name="price" value="<%=merchandise.price%>">
+
+        <table class="table table-bordered border-primary">
+            <tr>
+                <td rowspan="5">
+                    <img src="<%=merchandise.image%>" alt="Merchandise Image" style="width:200px;height:200px;">
+                </td>
+                <td><%=merchandise.name%></td>
+            </tr>
+            <tr>
+                <td>가격 : <%=merchandise.price%> 원</td>
+            </tr>
+            <tr>
+                <td>브렌드 : <%=merchandise.brand%></td>
+            </tr>
+            <tr>
+                <td>
+                    구매 수량 : <input type="number" name="qty" style="width: 100px;" min="0" value="0" onchange="updateButtons()">
+                </td>
+            </tr>
+            <% if (logined === 'YES'){ %>
+                <tr>
+                    <td>
+                        <button style="margin-right: 10px;" id="purchaseButton" class="btn btn-outline-primary btn-sm" type="submit" disabled>결제</button>
+                        <button id="cartButton" class="btn btn-outline-primary btn-sm" disabled>장바구니</button>
+                    </td>
+                </tr>
+            <%}%>
+        </table>
+    </form>
+</div>

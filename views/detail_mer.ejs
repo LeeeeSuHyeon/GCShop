@@ -1,0 +1,24 @@
+<div class="container">
+    <table class="table table-bordered border-primary">
+        <tr>
+            <td rowspan="4">
+                <img src="<%=merchandise.image%>" alt="Merchandise Image" style="width:200px;height:200px;">
+            </td>
+            <td><%=merchandise.name%></td>
+        </tr>
+        
+        <tr>    
+            <td>가격 : <%=merchandise.price%> 원</td>
+        </tr>
+        
+        <tr>
+            <td>브렌드 : <%=merchandise.brand%></td>
+        </tr>
+        <% if (logined === 'YES'){ %>
+            <tr>
+                <td><a href ="/purchase/detail/<%=merchandise.mer_id%>" style="margin-right: 10px;"><button class="btn btn-outline-primary btn-sm">구매</button></a><a href ="#"><button class="btn btn-outline-primary btn-sm">장바구니</button></a></td>
+            </tr>
+        <%}%>
+        
+    </table>
+</div>
