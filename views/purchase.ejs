@@ -16,7 +16,7 @@
                 <td><%=purchase.date%></td>
                 <td>
                     <% if(purchase.cancel === 'N'){ %>
-                        <a href="#">구매 취소</a>
+                        <a href="/purchase/cancel/<%=purchase.purchase_id%>" onclick="if (confirm('정말로 삭제하겠습니까?') == false) {return false;}">구매 취소</a>
                     <% } else { %>
                         취소된 상품
                     <% } %>

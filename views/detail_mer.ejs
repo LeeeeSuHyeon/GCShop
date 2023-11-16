@@ -16,7 +16,10 @@
         </tr>
         <% if (logined === 'YES'){ %>
             <tr>
-                <td><a href ="/purchase/detail/<%=merchandise.mer_id%>" style="margin-right: 10px;"><button class="btn btn-outline-primary btn-sm">구매</button></a><a href ="#"><button class="btn btn-outline-primary btn-sm">장바구니</button></a></td>
+                <td>
+                    <a href ="/purchase/detail/<%=merchandise.mer_id%>" style="margin-right: 10px;"><button class="btn btn-outline-primary btn-sm">구매</button></a>
+                    <a href ="/purchase/cart_process/<%=merchandise.mer_id%>"><button class="btn btn-outline-primary btn-sm">장바구니</button></a>
+                </td>
             </tr>
         <%}%>
         
