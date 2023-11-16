@@ -1,31 +1,63 @@
 <!-- 201935312 이수현 views/purchase.ejs -->
 
-<table class="table table-bordered border-primary" style="text-align: center;">
-    <thead >
-        <th>상품</th><th>상품명</th><th>단가</th><th>구매량</th><th>총금액</th><th>구매일</th><th>취소여부</th>
-    </thead> 
-   
-    <% if(purchases !== undefined){
-        purchases.map((purchase)=>{ %>
-            <tr>
-                <td><img src="<%=purchase.img%>" alt="상품 이미지" style="width: 100px; height: 100px;"></td>
-                <td><%=purchase.name%></td>
-                <td><%=purchase.price%></td>
-                <td><%=purchase.qty%></td>
-                <td><%=purchase.total%></td>
-                <td><%=purchase.date%></td>
-                <td>
-                    <% if(purchase.cancel === 'N'){ %>
-                        <a href="/purchase/cancel/<%=purchase.purchase_id%>" onclick="if (confirm('정말로 삭제하겠습니까?') == false) {return false;}">구매 취소</a>
-                    <% } else { %>
-                        취소된 상품
-                    <% } %>
-                </td>
-            </tr>
-        <%});
-        } else { %>
-            <tr>
-                <td colspan="7">자료없음</td>
-            </tr>
-        <% } %>
-</table>
+
+<% if(userClass === '02') { %> 
+    <table class="table table-bordered border-primary" style="text-align: center;">
+        <thead >
+            <th>상품</th><th>상품명</th><th>단가</th><th>구매량</th><th>총금액</th><th>구매일</th><th>취소여부</th>
+        </thead> 
+    
+        <% if(purchases !== undefined){
+            purchases.map((purchase)=>{ %>
+                <tr>
+                    <td><img src="<%=purchase.img%>" alt="상품 이미지" style="width: 100px; height: 100px;"></td>
+                    <td><%=purchase.name%></td>
+                    <td><%=purchase.price%></td>
+                    <td><%=purchase.qty%></td>
+                    <td><%=purchase.total%></td>
+                    <td><%=purchase.date%></td>
+                    <td>
+                        <% if(purchase.cancel === 'N'){ %>
+                            <a href="/purchase/cancel/<%=purchase.purchase_id%>" onclick="if (confirm('정말로 삭제하겠습니까?') == false) {return false;}">구매 취소</a>
+                        <% } else { %>
+                            취소된 상품
+                        <% } %>
+                    </td>
+                </tr>
+            <%});
+            } else { %>
+                <tr>
+                    <td colspan="7">자료없음</td>
+                </tr>
+            <% } %>
+    </table>
+<% } 
+else if (userClass === '01'){ %>
+    <table class="table table-bordered border-primary" style="text-align: center;">
+        <thead >
+            <th>사용자 아이디</th><th>상품</th><th>상품명</th><th>단가</th><th>구매량</th><th>총금액</th><th>구매일</th>
+        </thead> 
+    
+        <% if(purchases !== undefined){
+            purchases.map((purchase)=>{ %>
+                <tr>
+                    <td><%=purchase.loginid%></td>
+                    <td><img src="<%=purchase.img%>" alt="상품 이미지" style="width: 100px; height: 100px;"></td>
+                    <td><%=purchase.name%></td>
+                    <td><%=purchase.price%></td>
+                    <td><%=purchase.qty%></td>
+                    <td><%=purchase.total%></td>
+                    <td><%=purchase.date%></td>
+                    <% if(update === 'Y'){ %>
+                        <td><a href = "/purchase/update/<%=purchase.purchase_id%>"> 수정 </a> </td>
+                        <td><a href="/purchase/delete_process/<%=purchase.purchase_id%>" onclick="if (confirm('정말로 삭제하겠습니까?') == false) {return false;}"> 삭제 </a></td>
+                    <%} %>
+                </tr>
+            <%});
+            } else { %>
+                <tr>
+                    <td colspan="7">자료없음</td>
+                </tr>
+            <% } %>
+    </table>
+<% } %>

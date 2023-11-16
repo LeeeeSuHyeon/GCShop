@@ -1,0 +1,51 @@
+<!-- 201935312 이수현 purchaseCU.ejs -->
+
+<div class="container">	
+    <h2>구매 내역 입력</h2>
+<!-- context로 넘겨준 데이터에 따라 update와 create 분류 -->
+	<% if (purchase !== null){ %>
+		<form action="/purchase/update_process" method="post" >
+            <input type = 'hidden' value = '<%=purchase.purchase_id%>' name = 'p_id'>
+			<div class="mb-3">
+				<label class="form-label" for="id">사용자 아이디</label> 
+				<input class="form-control" type="text" name="loginid" value = "<%=purchase.loginid%>" style = "width:300px;" />
+			</div>
+            <div class="mb-3">
+				<label class="form-label" for="id">상품 아이디</label> 
+				<input class="form-control" type="text" name="mer_id" value = "<%=purchase.mer_id%>" style = "width:300px;" />
+			</div>
+            <div class="mb-3">
+				<label class="form-label" for="id">수량</label> 
+				<input class="form-control" type="text" name="qty" value = "<%=purchase.qty%>" style = "width:300px;" />
+			</div>
+            <div class="mb-3">
+				<label class="form-label" for="id">날짜</label> 
+				<input class="form-control" type="text" name="date" value = "<%=purchase.date%>" style = "width:300px;" />
+			</div>
+			
+			<button class="btn btn-outline-primary btn-sm" type="submit">입력</button>
+	  </form>
+	  <% } 
+	  else { %> 
+		<form action="/purchase/create_process" method="post" >
+            <div class="mb-3">
+				<label class="form-label" for="id">사용자 아이디</label> 
+				<input class="form-control" type="text" name="loginid"  style = "width:300px;" />
+			</div>
+            <div class="mb-3">
+				<label class="form-label" for="id">상품 아이디</label> 
+				<input class="form-control" type="text" name="mer_id" style = "width:300px;" />
+			</div>
+            <div class="mb-3">
+				<label class="form-label" for="id">수량</label> 
+				<input class="form-control" type="text" name="qty" style = "width:300px;" />
+			</div>
+            <div class="mb-3">
+				<label class="form-label" for="id">날짜</label> 
+				<input class="form-control" type="text" name="date" style = "width:300px;" />
+			</div>
+			
+			<button class="btn btn-outline-primary btn-sm" type="submit">입력</button>
+  </form>
+  <% } %>
+</div>

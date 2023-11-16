@@ -1,39 +1,74 @@
 <!-- 201935312 이수현 views/cart.ejs -->
 
-<form action="/purchase/purchase_process" method="post">
-    <div style="position: relative;">
-        <table class="table table-bordered border-primary" style="text-align: center;">
-            <thead>
-                <th>구매선택</th><th>상품</th><th>상품명</th><th>단가</th><th>담은날</th><th>수량</th>
-            </thead> 
-            
-            <input type="hidden" name="cart" value="true">
-            <input type="hidden" name="length" value="<%=carts.length%>">
-
-            <% if(carts !== undefined){
-                carts.map((cart, index)=>{ %>
-                    <input type="hidden" name="mer_id[<%=index%>]" value="<%=cart.mer_id%>">
-                    <input type="hidden" name="price[<%=index%>]" value="<%=cart.price%>">
-
+<% if (userClass === '02'){ %>
+    <form action="/purchase/purchase_process" method="post">
+        <div style="position: relative;">
+            <table class="table table-bordered border-primary" style="text-align: center;">
+                <thead>
+                    <th>구매선택</th><th>상품</th><th>상품명</th><th>단가</th><th>담은 날</th><th>수량</th>
+                </thead> 
+    
+                <input type="hidden" name="cart" value="true">
+                <input type="hidden" name="length" value="<%=carts.length%>">
+    
+                <% if(carts !== undefined){
+                    carts.map((cart, index)=>{ %>
+                        <input type="hidden" name="mer_id[<%=index%>]" value="<%=cart.mer_id%>">
+                        <input type="hidden" name="price[<%=index%>]" value="<%=cart.price%>">
+    
+                        <tr>
+                            <td><input type="checkbox" name="selectedCarts" checked></td>
+                            <td><img src="<%=cart.image%>" alt="상품 이미지" style="width: 100px; height: 100px;"></td>
+                            <td><%=cart.name%></td>
+                            <td><%=cart.price%></td>
+                            <td><%=cart.date%></td>
+                            <td>
+                                구매 수량 : <input type="number" name="qty[<%=index%>]" style="width: 100px;" min="1" value="1">
+                            </td>
+                        </tr>
+                    <%});
+                } else { %>
                     <tr>
-                        <td><input type="checkbox" name="selectedCarts" checked></td>
-                        <td><img src="<%=cart.image%>" alt="상품 이미지" style="width: 100px; height: 100px;"></td>
-                        <td><%=cart.name%></td>
-                        <td><%=cart.price%></td>
-                        <td><%=cart.date%></td>
-                        <td>
-                            구매 수량 : <input type="number" name="qty[<%=index%>]" style="width: 100px;" min="1" value="1">
-                        </td>
+                        <td colspan="6">자료없음</td>
                     </tr>
-                <%});
-            } else { %>
-                <tr>
-                    <td colspan="6">자료없음</td>
-                </tr>
-            <% } %>
-        </table>
-        <div style="text-align: right;">
-            <button id="purchaseButton" class="btn btn-outline-primary btn-sm" type="submit">결제</button>
+                <% } %>
+            </table>
+            <div style="text-align: right;">
+                <button id="purchaseButton" class="btn btn-outline-primary btn-sm" type="submit">결제</button>
+            </div>
         </div>
-    </div>
-</form>
+    </form>   
+<% }
+else if(userClass === '01'){ %>
+        <div style="position: relative;">
+            <table class="table table-bordered border-primary" style="text-align: center;">
+                <thead>
+                    <th>구매선택</th><th>사용자</th><th>상품</th><th>상품명</th><th>단가</th><th>담은 날</th><th>수량</th>
+                </thead> 
+    
+                <% if(carts !== undefined){
+                    carts.map((cart, index)=>{ %>
+                        <tr>
+                            <td><input type="checkbox" name="selectedCarts" checked></td>
+                            <td><%=cart.loginid%></td>
+                            <td><img src="<%=cart.image%>" alt="상품 이미지" style="width: 100px; height: 100px;"></td>
+                            <td><%=cart.name%></td>
+                            <td><%=cart.price%></td>
+                            <td><%=cart.date%></td>
+                            <td>
+                                구매 수량 : <input type="number" name="qty[<%=index%>]" style="width: 100px;" min="1" value="1">
+                            </td>
+                            <% if(update === 'Y'){ %>
+                                <td><a href = "/purchase/cart/update/<%=cart.cart_id%>"> 수정 </a> </td>
+                                <td><a href="/purchase/cart/delete_process/<%=cart.cart_id%>" onclick="if (confirm('정말로 삭제하겠습니까?') == false) {return false;}"> 삭제 </a></td>
+                            <%} %>
+                        </tr>
+                    <%});
+                } else { %>
+                    <tr>
+                        <td colspan="6">자료없음</td>
+                    </tr>
+                <% } %>
+            </table>
+        </div>
+<% } %> 
