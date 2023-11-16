@@ -35,19 +35,21 @@
 else if (userClass === '01'){ %>
     <table class="table table-bordered border-primary" style="text-align: center;">
         <thead >
-            <th>사용자 아이디</th><th>상품</th><th>상품명</th><th>단가</th><th>구매량</th><th>총금액</th><th>구매일</th>
+            <th>사용자 아이디</th><th>상품</th><th>상품명</th><th>단가</th><th>구매량</th><th>총금액</th><th>구매일</th><th>구매 확정</th>
         </thead> 
     
         <% if(purchases !== undefined){
             purchases.map((purchase)=>{ %>
+                <!-- <tr <%= purchase.cancel === 'Y' ? 'style="background-color: #b03d3d;"' : '' %>> -->
                 <tr>
-                    <td><%=purchase.loginid%></td>
+                    <td><%=purchase.loginid%></td>                   
                     <td><img src="<%=purchase.img%>" alt="상품 이미지" style="width: 100px; height: 100px;"></td>
                     <td><%=purchase.name%></td>
                     <td><%=purchase.price%></td>
                     <td><%=purchase.qty%></td>
                     <td><%=purchase.total%></td>
                     <td><%=purchase.date%></td>
+                    <td><%=purchase.cancel === 'Y' ? '취소된 상품입니다' : '구매 완료'%></td>
                     <% if(update === 'Y'){ %>
                         <td><a href = "/purchase/update/<%=purchase.purchase_id%>"> 수정 </a> </td>
                         <td><a href="/purchase/delete_process/<%=purchase.purchase_id%>" onclick="if (confirm('정말로 삭제하겠습니까?') == false) {return false;}"> 삭제 </a></td>

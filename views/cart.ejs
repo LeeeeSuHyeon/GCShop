@@ -15,9 +15,10 @@
                     carts.map((cart, index)=>{ %>
                         <input type="hidden" name="mer_id[<%=index%>]" value="<%=cart.mer_id%>">
                         <input type="hidden" name="price[<%=index%>]" value="<%=cart.price%>">
+                        <input type="hidden" name="cart_id[<%=index%>]" value="<%=cart.cart_id%>">
     
                         <tr>
-                            <td><input type="checkbox" name="selectedCarts" checked></td>
+                            <td><input type="checkbox" name="selectedCarts[<%=index%>]" checked></td>
                             <td><img src="<%=cart.image%>" alt="상품 이미지" style="width: 100px; height: 100px;"></td>
                             <td><%=cart.name%></td>
                             <td><%=cart.price%></td>
