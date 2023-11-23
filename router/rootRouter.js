@@ -29,6 +29,10 @@ router.get('/shop/detail/:merId',(req, res)=>{
 }); 
 
 
+router.get('/shop/anal/customer',(req, res)=>{
+
+    shop.customeranal(req, res);
+}); 
 
 
 
