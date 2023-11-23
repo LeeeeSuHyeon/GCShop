@@ -34,6 +34,12 @@ router.get('/shop/anal/customer',(req, res)=>{
     shop.customeranal(req, res);
 }); 
 
+router.get('/shop/anal/supplier',(req, res)=>{
+
+    shop.suppilerRatio(req, res);
+}); 
+
+
 
 
 module.exports = router;
